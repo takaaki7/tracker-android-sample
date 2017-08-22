@@ -2,17 +2,17 @@
 Android client for [KARTE](https://karte.io)
 
 ## Usage
-### 1. projectへ.aarを追加する
-Android Studio上でprojectを右クリックし、"New" > "Module"から"Import .JAR/.AAR Package"を選択する。  
-"tracker-release.aar"を選んで適当なモジュール名(ex."tracker-release")をつけて追加する。
 
-### 2. build.gradleへ追加する
+### 1. build.gradleへ追加する
 app/build.gradleのdependenciesに上でimportしたモジュールを追加する。
 
 ```groovy
+repositories {
+    maven { url 'http://plaidev.github.com/android-tracker-sample/maven-repo' }
+}
+
 dependencies {
-  ...
-  compile project(':tracker-release')
+  compile 'io.karte.android:tracker:0.0.0'
 }
 ```
 
@@ -28,14 +28,14 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
     ...
 
-    Tracker tracker = Tracker.setupTracker(this, "YOUR_API_KEY");
+    Tracker tracker = Tracker.getInstance(this, "YOUR_API_KEY");
   }
 }
 ```
 
 ### 4. イベントの送信処理を追加する
 ```java
-Tracker tracker = Tracker.getTracker();
+Tracker tracker = Tracker.getInstance(this, "YOUR_API_KEY");
 try {
   JSONObject values = new JSONObject();
   values.put("sample_key", "sample_value");
@@ -47,7 +47,7 @@ try {
 
 ### 5. ユーザ情報の送信処理を追加する
 ```java
-Tracker tracker = Tracker.getTracker();
+Tracker tracker = Tracker.getInstance(this, "YOUR_API_KEY");
 try {
   JSONObject values = new JSONObject();
   values.put("user_id", user_id);
