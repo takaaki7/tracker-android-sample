@@ -1,5 +1,5 @@
-# tracker-android
-Android client for [KARTE](https://karte.io)
+# tracker-android-sample
+Android client sample for [KARTE](https://karte.io)
 
 ## Usage
 
@@ -8,7 +8,7 @@ app/build.gradleのdependenciesに上でimportしたモジュールを追加す�
 
 ```groovy
 repositories {
-    maven { url 'http://plaidev.github.com/android-tracker-sample/maven-repo' }
+  maven { url 'https://github.com/plaidev/tracker-android-sample/raw/master/maven-repo' }
 }
 
 dependencies {
@@ -28,14 +28,14 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
     ...
 
-    Tracker tracker = Tracker.getInstance(this, "YOUR_API_KEY");
+    Tracker tracker = Tracker.getInstance(this, "YOUR_APP_KEY");
   }
 }
 ```
 
 ### 4. イベントの送信処理を追加する
 ```java
-Tracker tracker = Tracker.getInstance(this, "YOUR_API_KEY");
+Tracker tracker = Tracker.getInstance(this, "YOUR_APP_KEY");
 try {
   JSONObject values = new JSONObject();
   values.put("sample_key", "sample_value");
@@ -47,7 +47,7 @@ try {
 
 ### 5. ユーザ情報の送信処理を追加する
 ```java
-Tracker tracker = Tracker.getInstance(this, "YOUR_API_KEY");
+Tracker tracker = Tracker.getInstance(this, "YOUR_APP_KEY");
 try {
   JSONObject values = new JSONObject();
   values.put("user_id", user_id);
