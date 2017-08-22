@@ -1,0 +1,15 @@
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'io.karte.android'
+            artifactId project.name
+            version '0.0.0'
+            artifact source: file("${project.buildDir}/outputs/aar/${project.name}-release.aar")
+        }
+    }
+    repositories {
+        maven {
+            url "file:${rootDir}/maven-repo"
+        }
+    }
+}

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "885362798008",
+    "firebase_url": "https://karte-tracker-sample-46cce.firebaseio.com",
+    "project_id": "karte-tracker-sample-46cce",
+    "storage_bucket": "karte-tracker-sample-46cce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885362798008:android:ebe838fb903707cb",
+        "android_client_info": {
+          "package_name": "io.karte.android.tracker_sample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "885362798008-06mdl442jmsm82gm9i4dfshau751rcag.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRgn44fKLd3PsB8R-q0YX1H7oZ-7YETJY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
