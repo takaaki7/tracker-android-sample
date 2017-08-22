@@ -273,17 +273,18 @@ public abstract class Tracker {
 
       final boolean success = sendRequestToTrack(url, data);
       if (!success) {
-        // queue again
-        synchronized (this.bufferedEvents) {
-          for (int i = 0; i < events.length(); i++) {
-            try {
-              JSONObject obj = events.getJSONObject(i);
-              this.bufferedEvents.add(obj);
-            } catch (JSONException e) {
-              Log.e(LOG_TAG_NAME, "JSON Exception:", e);
-            }
-          }
-        }
+        Log.e(LOG_TAG_NAME, "failed to send request");
+//        // queue again
+//        synchronized (this.bufferedEvents) {
+//          for (int i = 0; i < events.length(); i++) {
+//            try {
+//              JSONObject obj = events.getJSONObject(i);
+//              this.bufferedEvents.add(obj);
+//            } catch (JSONException e) {
+//              Log.e(LOG_TAG_NAME, "JSON Exception:", e);
+//            }
+//          }
+//        }
       }
     }
 
