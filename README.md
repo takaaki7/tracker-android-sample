@@ -16,7 +16,7 @@ dependencies {
 }
 ```
 
-### 3. Application or MainActivityのonCreateにセットアップ用のコードを追加する
+### 2. Application or MainActivityのonCreateにセットアップ用のコードを追加する
 ```java
 import io.karte.android.tracker.Tracker;
 
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-### 4. イベントの送信処理を追加する
+### 3. イベントの送信処理を追加する
 ```java
 Tracker tracker = Tracker.getInstance(this, "YOUR_APP_KEY");
 try {
@@ -45,7 +45,7 @@ try {
 }
 ```
 
-### 5. ユーザ情報の送信処理を追加する
+### 4. ユーザ情報の送信処理を追加する
 ```java
 Tracker tracker = Tracker.getInstance(this, "YOUR_APP_KEY");
 try {
