@@ -31,7 +31,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
   }
 
   private void sendCustomEvent (String message){
-    Tracker tracker = Tracker.getInstance(this, SampleApp.APP_KEY, SampleApp.TRACKER_CONFIG);
+    Tracker tracker = Tracker.getInstance(this, SampleApp.APP_KEY);
     try {
       JSONObject values = new JSONObject();
       values.put("message_text", message);
