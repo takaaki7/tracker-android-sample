@@ -17,11 +17,12 @@ final class AppProfile {
   private static final String VERSION_NAME_KEY = "app_version_name";
   private static final String VERSION_CODE_KEY = "app_version_code";
 
+  private final String packageName;
   // previous application version
-  public final String prevVersionName;
+  private final String prevVersionName;
   public final int prevVersionCode;
   // current application version
-  public final String versionName;
+  private final String versionName;
   public final int versionCode;
 
   private volatile JSONObject appProfileValues;
@@ -35,8 +36,10 @@ final class AppProfile {
     // get current version
     final PackageManager packageManager = context.getPackageManager();
     PackageInfo packageInfo = null;
+    String packageName = context.getPackageName();
+    this.packageName = packageName;
     try {
-      packageInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
+      packageInfo = packageManager.getPackageInfo(packageName, 0);
     } catch (PackageManager.NameNotFoundException e) {
       Log.e(Tracker.LOG_TAG_NAME, "failed to get current package info", e);
     }
@@ -63,6 +66,7 @@ final class AppProfile {
       values
               .put("version_name", this.versionName)
               .put("version_code", this.versionCode)
+              .put("package_name", this.packageName)
               .put("system_info", getSystemInfoValues());
 
       this.appProfileValues = values;
@@ -100,19 +104,19 @@ final class AppProfile {
     JSONObject values = new JSONObject();
     try {
       values.put("os", "Android");
-      if(Build.VERSION.RELEASE != null) {
+      if (Build.VERSION.RELEASE != null) {
         values.put("os_version", Build.VERSION.RELEASE);
       }
-      if(Build.DEVICE != null) {
+      if (Build.DEVICE != null) {
         values.put("device", Build.DEVICE);
       }
-      if(Build.BRAND != null) {
+      if (Build.BRAND != null) {
         values.put("brand", Build.BRAND);
       }
-      if(Build.MODEL != null) {
+      if (Build.MODEL != null) {
         values.put("model", Build.MODEL);
       }
-      if(Build.PRODUCT != null) {
+      if (Build.PRODUCT != null) {
         values.put("product", Build.MODEL);
       }
     } catch (JSONException e) {

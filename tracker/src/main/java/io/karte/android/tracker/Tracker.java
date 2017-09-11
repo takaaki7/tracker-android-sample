@@ -35,7 +35,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 public abstract class Tracker {
 
@@ -52,6 +51,7 @@ public abstract class Tracker {
   public abstract void track(String event_name, JSONObject values, boolean withAppInfo);
   public abstract void view();
   public abstract void view(JSONObject values);
+  public abstract void trackFcmToken(String token);
   public abstract void flush();
 
   public static Tracker getInstance(Context context, String key) {
@@ -104,6 +104,8 @@ public abstract class Tracker {
     public void view(JSONObject values) {}
     @Override
     public void flush() {}
+    @Override
+    public void trackFcmToken(String token) {}
   }
 
   private final static class TrackerImpl extends Tracker {
@@ -390,6 +392,18 @@ public abstract class Tracker {
         JSONObject values = this.appProfile.getAppProfileValuesForUpdate();
         track("native_app_update", values);
       }
+    }
+
+    public void trackFcmToken(String token) {
+      JSONObject values = new JSONObject();
+      try {
+        values.put("fcm_token", token);
+        values.put("subscribe", true);
+        values.put("os", "Android");
+      } catch (JSONException e) {
+        Log.e(Tracker.LOG_TAG_NAME, "failed to construct json", e);
+      }
+      track("plugin_native_app_identify", values);
     }
 
     private void trackMessageClick(String campaign_id, String shorten_id) {
