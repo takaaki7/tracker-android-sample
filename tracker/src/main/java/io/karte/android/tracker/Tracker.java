@@ -46,11 +46,11 @@ public abstract class Tracker {
     getInstance(context, key);
   }
 
-  public abstract void identify(JSONObject values);
   public abstract void track(String event_name, JSONObject values);
   public abstract void track(String event_name, JSONObject values, boolean withAppInfo);
-  public abstract void view();
-  public abstract void view(JSONObject values);
+  public abstract void identify(JSONObject values);
+  public abstract void view(String view_name);
+  public abstract void view(String view_name, JSONObject values);
   public abstract void trackFcmToken(String token);
   public abstract void flush();
 
@@ -99,9 +99,9 @@ public abstract class Tracker {
     @Override
     public void track(String event_name, JSONObject values, boolean withAppInfo) {}
     @Override
-    public void view() {}
+    public void view(String view_name) {}
     @Override
-    public void view(JSONObject values) {}
+    public void view(String view_name, JSONObject values) {}
     @Override
     public void flush() {}
     @Override
@@ -206,12 +206,20 @@ public abstract class Tracker {
       flush();
     }
 
-    public void view() {
-      view(null);
+    public void view(String view_name) {
+      view(view_name, null);
     }
 
-    public void view(JSONObject values) {
+    public void view(String view_name, JSONObject values) {
       String viewEventName = this.trackerConfig.getViewEventName();
+      if (values == null) {
+        values = new JSONObject();
+      }
+      try {
+        values.put("view_name", view_name);
+      } catch (JSONException e) {
+        Log.e(Tracker.LOG_TAG_NAME, "failed to put field", e);
+      }
       track(viewEventName, values);
     }
 
@@ -236,12 +244,12 @@ public abstract class Tracker {
       final JSONArray events = new JSONArray();
       synchronized (this.bufferedEvents) {
 
-        if(this.bufferedEvents.size() == 0) {
+        if (this.bufferedEvents.size() == 0) {
           Log.w(LOG_TAG_NAME, "no event to send");
           return;
         }
 
-        while(this.bufferedEvents.size() > MAX_EVENT_BUFFER_SIZE) {
+        while (this.bufferedEvents.size() > MAX_EVENT_BUFFER_SIZE) {
           JSONObject removed = this.bufferedEvents.remove(0);// delete oldest event
           Log.e(LOG_TAG_NAME, "Overflowed buffer " + removed);
         }

@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
     Log.i(LOG_KEY, "view event button clicked");
     try {
       JSONObject values = new JSONObject("{\"title\":\"app test view\"}");
-      Tracker.getInstance(this, SampleApp.APP_KEY).view(values);
+      Tracker.getInstance(this, SampleApp.APP_KEY).view("app test view", values);
     } catch (JSONException e){
       e.printStackTrace();
     }

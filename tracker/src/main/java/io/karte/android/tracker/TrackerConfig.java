@@ -11,7 +11,7 @@ class TrackerConfig {
   private static final String CONFIG_PREFIX = "io.karte.android.Tracker";
 
   private static final String DEFAULT_ENDPOINT_URL = "https://api.karte.io/v0/track";
-  private static final String DEFAULT_VIEW_EVENT_NAME = "native_app_view";
+  private static final String DEFAULT_VIEW_EVENT_NAME = "view";
 
   private final boolean enableTrackingAppLifecycle;
   private final String endpoint;
