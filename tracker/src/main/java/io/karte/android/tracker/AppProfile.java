@@ -19,10 +19,10 @@ final class AppProfile {
 
   private final String packageName;
   // previous application version
-  private final String prevVersionName;
+  public final String prevVersionName;
   public final int prevVersionCode;
   // current application version
-  private final String versionName;
+  public final String versionName;
   public final int versionCode;
 
   private volatile JSONObject appProfileValues;
