@@ -147,7 +147,7 @@ public abstract class Tracker {
       registerActivityLifecycleCallback(application);
 
       this.trackerConfig = trackerConfig;
-      if (this.trackerConfig.enabledTrackingAppLifeCycle()) {
+      if (this.trackerConfig.enabledTrackingAppLifecycle()) {
         trackAppLifecycle();
       }
       if (this.trackerConfig.enabledTrackingCrashError()) {

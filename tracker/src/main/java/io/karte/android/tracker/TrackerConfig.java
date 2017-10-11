@@ -26,7 +26,7 @@ class TrackerConfig {
     this.enableTrackingCrashError = bundle.getBoolean(CONFIG_PREFIX + "." + "TrackingCrashError", false);
 
     Log.v(Tracker.LOG_TAG_NAME, "configured with\n" +
-      "TrackingAppLifecycle " + enabledTrackingAppLifeCycle() + "\n" +
+      "TrackingAppLifecycle " + enabledTrackingAppLifecycle() + "\n" +
       "Endpoint " + getEndpoint() + "\n" +
       "ViewEventName " + getViewEventName() + "\n" +
       "TrackingCrachError " + enabledTrackingCrashError()
@@ -73,7 +73,7 @@ class TrackerConfig {
     return this.endpoint;
   }
 
-  public boolean enabledTrackingAppLifeCycle() {
+  public boolean enabledTrackingAppLifecycle() {
     return this.enableTrackingAppLifecycle;
   }
 
