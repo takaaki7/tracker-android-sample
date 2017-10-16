@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 ### 3. Add to event tracking code
-## view event to track opening a view
+## View event to track opening a view
 ```java
 Tracker tracker = Tracker.getInstance(this, "YOUR_APP_KEY");
 try {
@@ -46,7 +46,7 @@ try {
 }
 ```
 
-## identify event to track user infomation
+## Identify event to track user infomation
 ```java
 Tracker tracker = Tracker.getInstance(this, "YOUR_APP_KEY");
 try {
@@ -59,7 +59,7 @@ try {
 }
 ```
 
-## custom event
+## Custom event
 ```java
 Tracker tracker = Tracker.getInstance(this, "YOUR_APP_KEY");
 try {
