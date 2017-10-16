@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 ### 3. Add to event tracking code
-## View event to track opening a view
+#### View event to track opening a view
 ```java
 Tracker tracker = Tracker.getInstance(this, "YOUR_APP_KEY");
 try {
@@ -46,7 +46,7 @@ try {
 }
 ```
 
-## Identify event to track user infomation
+#### Identify event to track user infomation
 ```java
 Tracker tracker = Tracker.getInstance(this, "YOUR_APP_KEY");
 try {
@@ -59,7 +59,7 @@ try {
 }
 ```
 
-## Custom event
+#### Custom event
 ```java
 Tracker tracker = Tracker.getInstance(this, "YOUR_APP_KEY");
 try {
@@ -71,3 +71,22 @@ try {
 }
 ```
 
+### 4. (Option) Track the instance id of Firebase Cloud Messaging
+#### Add a class to track (Example)
+```java
+public class MyKarteFirebaseInstanceIdService extends KarteFirebaseInstanceIdService {
+
+  protected Tracker getTracker() {
+    return Tracker.getInstance(this, SampleApp.APP_KEY);
+  }
+}
+```
+
+#### Add an intent filter to AndroidManifest.xml (Example)
+```xml
+        <service android:name=".MyKarteFirebaseInstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+```
