@@ -1,10 +1,10 @@
 # tracker-android-sample
 Android client sample for [KARTE](https://karte.io)
 
-## Usage
+## Set up
 
-### 1. build.gradleへ追加する
-app/build.gradleのdependenciesに上でimportしたモジュールを追加する。
+### 1. Add to build.gradle
+Add the module to the dependencies of app/build.gradle
 
 ```groovy
 repositories {
@@ -12,11 +12,11 @@ repositories {
 }
 
 dependencies {
-  compile 'io.karte.android:tracker:0.0.0'
+  compile 'io.karte.android:tracker:0.0.2'
 }
 ```
 
-### 2. Application or MainActivityのonCreateにセットアップ用のコードを追加する
+### 2. Implement set up code in Application or MainActivity
 ```java
 import io.karte.android.tracker.Tracker;
 
@@ -33,19 +33,20 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-### 3. イベントの送信処理を追加する
+### 3. Add to event tracking code
+## view event to track opening a view
 ```java
 Tracker tracker = Tracker.getInstance(this, "YOUR_APP_KEY");
 try {
   JSONObject values = new JSONObject();
   values.put("sample_key", "sample_value");
-  tracker.track("sample_event_name", values);
+  tracker.view("first_view", values);
 } catch (JSONException e) {
   Log.e("App", "Failed to construct JSONObject", e);
 }
 ```
 
-### 4. ユーザ情報の送信処理を追加する
+## identify event to track user infomation
 ```java
 Tracker tracker = Tracker.getInstance(this, "YOUR_APP_KEY");
 try {
@@ -57,3 +58,16 @@ try {
   Log.e("App", "Failed to construct JSONObject", e);
 }
 ```
+
+## custom event
+```java
+Tracker tracker = Tracker.getInstance(this, "YOUR_APP_KEY");
+try {
+  JSONObject values = new JSONObject();
+  values.put("sample_key", "sample_value");
+  tracker.track("sample_event_name", values);
+} catch (JSONException e) {
+  Log.e("App", "Failed to construct JSONObject", e);
+}
+```
+
