@@ -1,7 +1,7 @@
 # tracker-android-sample
 Android client sample for [KARTE](https://karte.io)
 
-## Set up
+## Setting up
 
 ### 1. Add to build.gradle
 Add the module to the dependencies of app/build.gradle
@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-  compile 'io.karte.android:tracker:0.0.2'
+  compile 'io.karte.android:tracker:0.0.3'
 }
 ```
 
