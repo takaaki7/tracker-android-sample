@@ -16,7 +16,7 @@ dependencies {
 }
 ```
 
-### 2. Implement set up code in Application or MainActivity
+### 2. Implement set up code in entry point of Application or Activity
 ```java
 import io.karte.android.tracker.Tracker;
 
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
     ...
 
-    Tracker tracker = Tracker.getInstance(this, "YOUR_APP_KEY");
+    Tracker.getInstance(this, "YOUR_APP_KEY");
   }
 }
 ```
